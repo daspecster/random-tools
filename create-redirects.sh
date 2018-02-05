@@ -1,6 +1,11 @@
 #!/bin/bash
 set -e
-
+# Description:
+# This script will create a index.php file for every directory found 
+# and then it will redirect you to the root domain. This script is useful
+# for some domains or projects that don't have a defined pattern or that
+# serve more generalized scripts instead of dedicated applications.
+#
 # Author: Austin Kregel <github@kbco.me>
 USAGE="Usage ./create-redirects.sh {root-directory}"
 
@@ -22,7 +27,7 @@ for dir in $(find . -type d); do
     if [ ! -f $TMP_DIR ]; then
         cat > $TMP_DIR << EOF 
 <?php
-header('Location: /index.php');
+header('Location: /');
 
 EOF
    	echo $TMP_DIR
